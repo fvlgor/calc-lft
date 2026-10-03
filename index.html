@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,7 +13,7 @@
             --concord-crimson-glow: rgba(158, 11, 15, 0.4);
             --concord-orange: #d16b1d;
             --concord-orange-glow: rgba(209, 107, 29, 0.3);
-            --glass: rgba(8, 3, 3, 0.92);
+            --glass: rgba(8, 3, 3, 0.95);
             --glass-card: rgba(18, 8, 8, 0.85);
             --border-crimson: rgba(158, 11, 15, 0.45);
             --border-orange: rgba(209, 107, 29, 0.4);
@@ -39,7 +37,7 @@
             overflow-x: hidden;
         }
 
-        /* Matrix Canvas Canvas Background */
+        /* Matrix Canvas Background */
         #matrix-canvas {
             position: fixed;
             top: 0; left: 0;
@@ -49,21 +47,27 @@
             opacity: 0.25;
         }
 
-        /* Status Banner */
+        /* Status Banner & Header Persistente */
         #status-banner {
             position: fixed; top: 0; left: 0; right: 0;
-            height: 55px;
             z-index: 200;
             background: var(--glass);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border-bottom: 2px solid var(--concord-crimson);
             display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.9);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .banner-top-row {
+            height: 50px;
+            display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 25px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.8);
-            font-family: 'Orbitron', sans-serif;
+            padding: 0 20px;
+            border-bottom: 1px solid rgba(158, 11, 15, 0.3);
         }
 
         .banner-left {
@@ -100,58 +104,52 @@
         @keyframes miniPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
 
         .banner-title {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             letter-spacing: 2px;
         }
 
         .banner-subtitle {
-            font-size: 9px;
+            font-size: 8px;
             color: var(--concord-orange);
             letter-spacing: 1.5px;
+        }
+
+        .banner-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .banner-right {
             display: flex;
             align-items: center;
-            gap: 20px;
-            font-size: 11px;
+            gap: 15px;
+            font-size: 10px;
             color: var(--concord-orange);
         }
 
-        /* Main Container */
-        .main-wrapper {
-            position: relative;
-            z-index: 10;
-            padding-top: 75px;
-            padding-bottom: 60px;
-            max-width: 1350px;
-            margin: 0 auto;
-            padding-left: 20px;
-            padding-right: 20px;
+        /* Persisted Cyber Nav Tabs Row */
+        .banner-nav-row {
+            padding: 6px 15px;
+            background: rgba(5, 2, 2, 0.95);
         }
 
-        /* Cyber Nav Tabs */
         .nav-tabs {
             display: flex;
-            gap: 5px;
-            margin-bottom: 25px;
-            background: rgba(10, 5, 5, 0.8);
-            border: 1px solid var(--border-crimson);
-            padding: 5px;
-            border-radius: 4px;
-            overflow-x: auto;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
         }
 
         .tab-btn {
             flex: 1;
-            min-width: 180px;
-            padding: 12px 15px;
-            background: transparent;
-            border: 1px solid transparent;
+            padding: 8px 10px;
+            background: rgba(15, 8, 8, 0.6);
+            border: 1px solid var(--border-crimson);
             color: var(--text-muted);
             font-family: 'Orbitron', sans-serif;
-            font-size: 10px;
+            font-size: 9px;
             font-weight: 700;
             letter-spacing: 1px;
             cursor: pointer;
@@ -160,20 +158,33 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
+            border-radius: 2px;
         }
 
         .tab-btn:hover {
             color: #fff;
-            background: rgba(158, 11, 15, 0.2);
-            border-color: var(--border-crimson);
+            background: rgba(158, 11, 15, 0.3);
+            border-color: var(--concord-orange);
         }
 
         .tab-btn.active {
             color: #fff;
             background: var(--concord-crimson);
             border-color: var(--concord-orange);
-            box-shadow: 0 0 15px var(--concord-crimson-glow);
+            box-shadow: 0 0 12px var(--concord-crimson-glow);
+        }
+
+        /* Main Container Adjustment */
+        .main-wrapper {
+            position: relative;
+            z-index: 10;
+            padding-top: 110px;
+            padding-bottom: 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         /* Tab Content Panels */
@@ -197,8 +208,8 @@
             border: 1px solid var(--border-crimson);
             border-left: 4px solid var(--concord-crimson);
             border-radius: 4px;
-            padding: 25px;
-            margin-bottom: 25px;
+            padding: 22px;
+            margin-bottom: 22px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.6);
             backdrop-filter: blur(8px);
             position: relative;
@@ -220,13 +231,13 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid var(--border-crimson);
-            padding-bottom: 12px;
-            margin-bottom: 20px;
+            padding-bottom: 10px;
+            margin-bottom: 18px;
         }
 
         .card-title {
             font-family: 'Orbitron', sans-serif;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #fff;
             letter-spacing: 1.5px;
@@ -277,13 +288,13 @@
 
         .legal-basis {
             font-size: 11px;
-            color: #64748b;
+            color: #94a3b8;
             margin-bottom: 10px;
             font-style: italic;
         }
 
         .violation-desc {
-            font-size: 13px;
+            font-size: 12px;
             line-height: 1.6;
             color: var(--text-main);
             margin-bottom: 12px;
@@ -293,48 +304,36 @@
             background: rgba(158, 11, 15, 0.15);
             border-left: 3px solid var(--concord-crimson);
             padding: 10px 14px;
-            font-size: 12px;
+            font-size: 11px;
             color: #fca5a5;
             border-radius: 0 4px 4px 0;
         }
 
         /* Grid Layouts */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+
+        @media (max-width: 1024px) {
+            .grid-3, .grid-4, .grid-5 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 650px) {
+            .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
         }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-        }
-
-        @media (max-width: 900px) {
-            .grid-2, .grid-3, .grid-4 {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Form Controls */
+        /* Form Controls & Red Calendar Picker */
         .form-group {
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .form-group label {
             display: block;
             font-family: 'Orbitron', sans-serif;
-            font-size: 10px;
+            font-size: 9px;
             color: var(--concord-orange);
             letter-spacing: 1px;
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         .form-group input[type="text"],
@@ -342,15 +341,23 @@
         .form-group input[type="date"],
         .form-group select {
             width: 100%;
-            padding: 10px 12px;
+            padding: 8px 10px;
             background: #060303;
             border: 1px solid var(--border-crimson);
             color: #fff;
             font-family: 'Share Tech Mono', monospace;
-            font-size: 13px;
+            font-size: 12px;
             border-radius: 3px;
             outline: none;
             transition: all 0.3s;
+        }
+
+        /* Custom Red Calendar Button */
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(15%) sepia(95%) saturate(6932%) hue-rotate(353deg) brightness(88%) contrast(106%);
+            cursor: pointer;
+            padding: 2px;
+            border-radius: 2px;
         }
 
         .form-group input:focus, .form-group select:focus {
@@ -362,8 +369,8 @@
         .checkbox-label {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 12px;
+            gap: 8px;
+            font-size: 11px;
             cursor: pointer;
             user-select: none;
             color: var(--text-main);
@@ -380,7 +387,7 @@
 
         .checkbox-label input[type="checkbox"] {
             accent-color: var(--concord-crimson);
-            width: 16px; height: 16px;
+            width: 15px; height: 15px;
         }
 
         /* Action Buttons */
@@ -388,23 +395,24 @@
             background: var(--concord-crimson);
             color: #fff;
             border: 1px solid var(--concord-orange);
-            padding: 12px 24px;
+            padding: 8px 14px;
             font-family: 'Orbitron', sans-serif;
-            font-size: 11px;
+            font-size: 9px;
             font-weight: 700;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             cursor: pointer;
             transition: all 0.3s;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             border-radius: 3px;
+            text-decoration: none;
         }
 
         .btn-cyber:hover {
             background: #c10d12;
-            box-shadow: 0 0 20px var(--concord-crimson-glow);
+            box-shadow: 0 0 15px var(--concord-crimson-glow);
             transform: translateY(-1px);
         }
 
@@ -416,19 +424,19 @@
 
         .btn-cyber.btn-orange:hover {
             background: #e57c28;
-            box-shadow: 0 0 20px var(--concord-orange-glow);
+            box-shadow: 0 0 15px var(--concord-orange-glow);
         }
 
         /* Results Tables */
         .table-cyber {
             width: 100%;
             border-collapse: collapse;
-            font-size: 12px;
-            margin-top: 15px;
+            font-size: 11px;
+            margin-top: 10px;
         }
 
         .table-cyber th, .table-cyber td {
-            padding: 10px 14px;
+            padding: 8px 12px;
             border: 1px solid var(--border-crimson);
             text-align: left;
         }
@@ -436,7 +444,7 @@
         .table-cyber th {
             background: rgba(20, 5, 5, 0.9);
             font-family: 'Orbitron', sans-serif;
-            font-size: 10px;
+            font-size: 9px;
             color: var(--concord-orange);
             letter-spacing: 1px;
         }
@@ -454,7 +462,7 @@
         .table-cyber tr.grand-total-row {
             background: var(--concord-crimson);
             font-family: 'Orbitron', sans-serif;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 700;
             color: #fff;
         }
@@ -463,50 +471,91 @@
             text-align: right !important;
             font-family: 'Share Tech Mono', monospace;
             font-weight: 700;
+            cursor: pointer;
+            transition: color 0.2s, background-color 0.2s;
         }
 
-        /* Key Metrics Callout Box */
+        .amount-col:hover {
+            color: var(--concord-orange);
+            background-color: rgba(209, 107, 29, 0.15);
+        }
+
+        /* Metric Boxes */
         .metric-box {
             background: rgba(10, 3, 3, 0.9);
             border: 1px solid var(--border-orange);
-            padding: 15px;
+            padding: 12px;
             border-radius: 4px;
             text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .metric-box:hover {
+            transform: translateY(-2px);
+            border-color: #fff;
         }
 
         .metric-val {
             font-family: 'Orbitron', sans-serif;
-            font-size: 22px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--concord-orange);
-            margin-top: 5px;
+            margin-top: 4px;
             text-shadow: 0 0 10px var(--concord-orange-glow);
         }
 
         .metric-label {
-            font-size: 10px;
+            font-size: 9px;
             color: var(--text-muted);
             letter-spacing: 1px;
         }
 
-        /* Collapsible Section */
-        .collapsible-trigger {
-            cursor: pointer;
-            user-select: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Tooltip Flotante de Fórmulas */
+        #formula-tooltip {
+            position: absolute;
+            display: none;
+            z-index: 1000;
+            background: rgba(15, 5, 5, 0.98);
+            border: 1px solid var(--concord-orange);
+            box-shadow: 0 0 20px rgba(0,0,0,0.9), 0 0 10px var(--concord-orange-glow);
+            padding: 12px 16px;
+            border-radius: 4px;
+            max-width: 380px;
+            pointer-events: none;
+            backdrop-filter: blur(10px);
+            font-family: 'Share Tech Mono', monospace;
         }
 
-        .collapsible-trigger:hover .card-title {
+        .tt-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 10px;
             color: var(--concord-orange);
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            border-bottom: 1px solid rgba(209, 107, 29, 0.3);
+            padding-bottom: 4px;
+        }
+
+        .tt-formula {
+            font-size: 11px;
+            color: #6ee7b7;
+            margin-bottom: 6px;
+            word-break: break-all;
+        }
+
+        .tt-detail {
+            font-size: 10px;
+            color: var(--text-muted);
+            line-height: 1.4;
         }
 
         /* Footer Terminal */
         #terminal-footer {
             position: fixed;
             bottom: 0; left: 0; right: 0;
-            height: 35px;
+            height: 30px;
             z-index: 200;
             background: rgba(5, 2, 2, 0.95);
             border-top: 1px solid var(--border-crimson);
@@ -514,33 +563,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 0 20px;
-            font-size: 10px;
+            font-size: 9px;
             font-family: 'Orbitron', sans-serif;
             color: var(--text-muted);
             backdrop-filter: blur(10px);
-        }
-
-        /* Print adjustments */
-        @media print {
-            #status-banner, #terminal-footer, .nav-tabs, #matrix-canvas, .btn-cyber {
-                display: none !important;
-            }
-            body {
-                background: #fff !important;
-                color: #000 !important;
-            }
-            .cyber-card {
-                background: #fff !important;
-                border: 1px solid #ccc !important;
-                color: #000 !important;
-                box-shadow: none !important;
-            }
-            .card-title, .violation-title, .metric-val {
-                color: #000 !important;
-            }
-            .tab-panel {
-                display: block !important;
-            }
         }
     </style>
 </head>
@@ -548,43 +574,61 @@
 
 <canvas id="matrix-canvas"></canvas>
 
-<!-- Top Status Banner -->
+<!-- Tooltip Global para Fórmulas -->
+<div id="formula-tooltip">
+    <div class="tt-title" id="tt-title">DESGLOSE DE FÓRMULA</div>
+    <div class="tt-formula" id="tt-formula">Fórmula</div>
+    <div class="tt-detail" id="tt-detail">Detalle de cálculo</div>
+</div>
+
+<!-- Top Status Banner Persistente con Menú Integrado -->
 <div id="status-banner">
-    <div class="banner-left">
-        <a href="javascript:void(0)" class="banner-brand">
-            <img src="https://cdn.prod.website-files.com/696023487059154b5cfb7860/698e84a757bbd3e3683dee2a_favicon-google.png" alt="Concord Logo">
-            <div>
-                <div class="banner-title">CONCORD FINANCE LLC</div>
-                <div class="banner-subtitle">LEGAL & LABOR CONTINGENCY AUDIT TERMINAL</div>
-            </div>
-        </a>
+    <div class="banner-top-row">
+        <div class="banner-left">
+            <a href="javascript:void(0)" class="banner-brand">
+                <img src="https://cdn.prod.website-files.com/696023487059154b5cfb7860/698e84a757bbd3e3683dee2a_favicon-google.png" alt="Concord Logo">
+                <div>
+                    <div class="banner-title">CONCORD FINANCE LLC</div>
+                    <div class="banner-subtitle">CALCULADORA LFT & DICTAMEN DE CONTINGENCIA LABORAL</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="banner-actions">
+            <button class="btn-cyber" onclick="guardarCaso()">💾 GUARDAR CASO (.lftcaso)</button>
+            <button class="btn-cyber btn-orange" onclick="document.getElementById('file-input').click()">📂 CARGAR CASO</button>
+            <input type="file" id="file-input" accept=".lftcaso" style="display:none;" onchange="cargarCaso(event)">
+        </div>
+
+        <div class="banner-right">
+            <div><span class="status-dot"></span> AUDIT ACTIVE</div>
+            <div>ID: <b style="color:#fff;">ACANOM</b></div>
+            <div>UMA 2026: <b style="color:#fff;" id="uma-display">$113.14</b></div>
+            <div id="clock-display">00:00:00</div>
+        </div>
     </div>
-    <div class="banner-right">
-        <div><span class="status-dot"></span> READY</div>
-        <div>ID: <b style="color:#fff;">ACANOM</b></div>
-        <div>STPS_UMA: <b style="color:#fff;" id="uma-display">$113.14</b></div>
-        <div id="clock-display">00:00:00</div>
+
+    <!-- Segunda hilera persistente con botones de navegación -->
+    <div class="banner-nav-row">
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('tab-dictamen', this)">
+                <span>⚖️ DICTAMEN JURÍDICO</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('tab-trabajador', this)">
+                <span>👤 DESGLOSE TRABAJADOR</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('tab-empresa', this)">
+                <span>🏢 MULTAS & PENAS EMPRESA</span>
+            </button>
+            <button class="tab-btn" onclick="switchTab('tab-resumen', this)">
+                <span>📊 CONTINGENCIA TOTAL</span>
+            </button>
+        </div>
     </div>
 </div>
 
 <!-- Main Wrapper -->
 <div class="main-wrapper">
-
-    <!-- Cyber Navigation Tabs -->
-    <div class="nav-tabs">
-        <button class="tab-btn active" onclick="switchTab('tab-dictamen', this)">
-            <span>⚖️ [01] DICTAMEN JURÍDICO</span>
-        </button>
-        <button class="tab-btn" onclick="switchTab('tab-trabajador', this)">
-            <span>👤 [02] DESGLOSE TRABAJADOR</span>
-        </button>
-        <button class="tab-btn" onclick="switchTab('tab-empresa', this)">
-            <span>🏢 [03] MULTAS & PENAS EMPRESA</span>
-        </button>
-        <button class="tab-btn" onclick="switchTab('tab-resumen', this)">
-            <span>📊 [04] CONTINGENCIA TOTAL</span>
-        </button>
-    </div>
 
     <!-- ========================================== -->
     <!-- TAB 1: DICTAMEN JURÍDICO (VIOLACIONES LFT) -->
@@ -597,35 +641,35 @@
                 </div>
                 <span class="card-badge">EVALUACIÓN LEGAL LFT VIGENTE (2026)</span>
             </div>
-            <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">
-                A continuación se desglosa el marco legal de las violaciones graves incurridas por la empresa en contra del trabajador, con fundamento explícito en la Ley Federal del Trabajo de México.
+            <p style="font-size: 12px; color: var(--text-muted); margin-bottom: 18px;">
+                Desglose sistemático de las violaciones graves incurridas por la empresa, incluyendo aspectos de plurifuncionalidad, retenes salariales, abusos en la jornada laboral, y explotación de propiedad intelectual.
             </p>
 
             <div class="violation-card">
                 <div class="violation-head">
-                    <div class="violation-title">1. Desempeño Simultáneo de Funciones sin Compensación (Plurifuncionalidad)</div>
-                    <span class="card-badge">GRAVE</span>
+                    <div class="violation-title">1. Plurifuncionalidad No Pagada y Explotación de Software (Derechos de Autor)</div>
+                    <span class="card-badge">GRAVE / PROPIEDAD INTELECTUAL</span>
                 </div>
-                <div class="legal-basis">Fundamento: Artículos 20, 56 Bis, 82, 84 y 86 LFT</div>
+                <div class="legal-basis">Fundamento: Artículos 20, 56 Bis, 82, 84, 86 y 163 LFT | Ley Federal del Derecho de Autor (LFDA)</div>
                 <div class="violation-desc">
-                    Se asignaron labores adicionales y especializadas de <strong>Analista / Desarrollador de Software</strong> de manera simultánea al puesto de Bilingual Collections Agent durante los últimos meses de la relación laboral, sin pactar retribución adicional ni formalizar adendum, continuando la empresa en uso y beneficio del software desarrollado por el trabajador.
+                    Se asignó de manera simultánea el puesto de <strong>Analista / Desarrollador de Software</strong> manteniendo las funciones de Bilingual Collections Agent. Dicho desarrollo se encuentra totalmente operativo y en producción diaria. Al no formalizarse ni pagarse salario complementario ni contrato de cesión de derechos patrimoniales sobre el software fuera de la jornada/contrato original, la empresa explota la obra ilegalmente.
                 </div>
                 <div class="penalty-box">
-                    <strong>Efecto & Penas:</strong> Obligación de pago retroactivo de los salarios devengados por el puesto secundario (Art. 56 Bis). Sanción administrativa de <strong>50 a 5,000 UMAs</strong> conforme al Título 16 LFT por omisión salarial y discriminación remunerativa.
+                    <strong>Efecto & Penas:</strong> Retroactivo inmediato de salarios devengados por el puesto secundario (Art. 56 Bis LFT). Multa de <strong>50 a 5,000 UMAs</strong> por omisión remunerativa y posible reserva de acciones por daños en materia de derechos de autor.
                 </div>
             </div>
 
             <div class="violation-card">
                 <div class="violation-head">
-                    <div class="violation-title">2. Despido Injustificado y Coerción bajo Necesidad Biológica (Uso de Sanitario)</div>
-                    <span class="card-badge">GRAVE / NULIDAD</span>
+                    <div class="violation-title">2. Despido Injustificado, Sobrecarga de Trabajo y Coerción Biológica</div>
+                    <span class="card-badge">GRAVE / NULIDAD ABSOLUTA</span>
                 </div>
-                <div class="legal-basis">Fundamento: Artículos 2, 3, 47, 48, 51 (Fracc. II, IV, V, IX) y 132 (Fracc. VI) LFT</div>
+                <div class="legal-basis">Fundamento: Artículos 2, 3, 47 (Fracc. X), 48, 51 y 132 LFT</div>
                 <div class="violation-desc">
-                    Pretensión de rescisión argumentando retardos insignificantes (promedio 5 mins) derivados del uso de instalaciones sanitarias. Restringir o sancionar necesidades fisiológicas atenta contra el Trabajo Digno y la Dignidad Humana. Asimismo, la falta de entrega formal del aviso rescisorio por escrito invalida la rescisión.
+                    Existencia de 1 sola falta por sobrecarga de trabajo y desvelos excesivos por ambas funciones. Las otras 2 faltas ocurrieron fuera del periodo de 30 días y fueron debidamente justificadas y aceptadas. Asimismo, personal de RH advirtió literalmente que la empresa <em>"no quiere gente que se esté enfermando"</em> y pretendió justificar la rescisión en minutos de uso del sanitario.
                 </div>
                 <div class="penalty-box">
-                    <strong>Efecto & Penas:</strong> Nulidad absoluta del despido, configurándose como Despido Injustificado o Rescisión Imputable al Patrón (Art. 51). Conlleva Indemnización Constitucional (3 meses), Salarios Vencidos, 20 Días por Año y Prima de Antigüedad, más multas de <strong>50 a 5,000 UMAs</strong>.
+                    <strong>Efecto & Penas:</strong> Inexistencia de causal legal de despido (Art. 47 X requiere más de 3 faltas en 30 días). Configura Despido Injustificado / Rescisión Imputable al Patrón. Conlleva Indemnización Constitucional, 20 Días por Año, Prima de Antigüedad y Salarios Vencidos, más multas de <strong>250 a 5,000 UMAs</strong> por atentar contra la dignidad humana.
                 </div>
             </div>
 
@@ -636,38 +680,38 @@
                 </div>
                 <div class="legal-basis">Fundamento: Artículos 5 (Fracc. X, XIII), 33, 98, 99, 106 y 110 LFT</div>
                 <div class="violation-desc">
-                    Retención del salario del último periodo laborado, bonos comisionables, vales de despensa y utilidades (PTU) como mecanismo de presión o represalia. El salario es de carácter irreductible e irrenunciable.
+                    Retención de salarios devengados, comisiones, utilidades (PTU) y vales de despensa como medida de coacción. El salario es de carácter irreductible e inembargable por causa patronal.
                 </div>
                 <div class="penalty-box">
-                    <strong>Efecto & Penas:</strong> Restitución inmediata con preferencia sobre otras deudas (Art. 113). Sanción administrativa específica por retención o descuento indebido de salario de <strong>50 a 5,000 UMAs</strong> por infracción.
+                    <strong>Efecto & Penas:</strong> Restitución total con preferencia sobre cualquier acreedor (Art. 113). Multa administrativa de <strong>50 a 5,000 UMAs</strong>.
                 </div>
             </div>
 
             <div class="violation-card">
                 <div class="violation-head">
                     <div class="violation-title">4. Coerción e Intimidación para Firma de Renuncia Voluntaria</div>
-                    <span class="card-badge">NULIDAD ABSOLUTA</span>
+                    <span class="card-badge">NULIDAD PLENO DERECHO</span>
                 </div>
                 <div class="legal-basis">Fundamento: Artículos 33 y 133 (Fracción VII) LFT</div>
                 <div class="violation-desc">
-                    Intimidación por parte del personal de Recursos Humanos condicionando la entrega de prestaciones devengadas a cambio de firmar una renuncia voluntaria y finiquito liberatorio con renuncia de derechos.
+                    Condicionar la entrega de finiquito o salarios ya devengados a la firma de renuncia voluntaria constituye una clara violación legal y vicio del consentimiento.
                 </div>
                 <div class="penalty-box">
-                    <strong>Efecto & Penas:</strong> Nulidad de pleno derecho de cualquier documento firmado bajo vicios del consentimiento. Sanción directa al patrón de <strong>50 a 5,000 UMAs</strong> por coaccionar o limitar derechos laborales.
+                    <strong>Efecto & Penas:</strong> Nulidad de cualquier finiquito unilateral. Sanción directa al patrón de <strong>50 a 5,000 UMAs</strong>.
                 </div>
             </div>
 
             <div class="violation-card">
                 <div class="violation-head">
-                    <div class="violation-title">5. Negativa de Expedición de Constancias Laborales y Bloqueo de Comunicación</div>
+                    <div class="violation-title">5. Omisión de Constancias Laborales y Bloqueo Digital</div>
                     <span class="card-badge">INCUMPLIMIENTO PATRONAL</span>
                 </div>
                 <div class="legal-basis">Fundamento: Artículos 31 y 132 (Fracciones VII y VIII) LFT</div>
                 <div class="violation-desc">
-                    Bloqueo del trabajador de canales operativos y de comunicación (WhatsApp/Slack) y negativa explícita a proporcionar constancias de días trabajados, salarios o servicios prestados.
+                    Negativa a entregar constancias de días trabajados e interrupción unilateral de comunicación en canales oficiales.
                 </div>
                 <div class="penalty-box">
-                    <strong>Efecto & Penas:</strong> Sanción administrativa de <strong>50 a 500 UMAs</strong> por incumplimiento de obligaciones de documentación patronal.
+                    <strong>Efecto & Penas:</strong> Multa administrativa de <strong>50 a 500 UMAs</strong>.
                 </div>
             </div>
         </div>
@@ -682,89 +726,89 @@
                 <div class="card-title">
                     <span>CONFIGURACIÓN DE DATOS LABORALES & SALARIALES</span>
                 </div>
-                <button class="btn-cyber btn-orange" onclick="calcularTodo()">⚡ RECALCULAR</button>
+                <span class="card-badge">CÁLCULO AUTOMÁTICO EN TIEMPO REAL</span>
             </div>
 
             <div class="grid-3">
                 <div class="form-group">
                     <label for="fecha_ingreso">FECHA DE INGRESO:</label>
-                    <input type="date" id="fecha_ingreso" value="2026-02-17" onchange="calcularTodo()">
+                    <input type="date" id="fecha_ingreso" value="2026-02-17">
                 </div>
                 <div class="form-group">
                     <label for="fecha_baja">FECHA DE DESPIDO / BAJA:</label>
-                    <input type="date" id="fecha_baja" value="2026-07-09" onchange="calcularTodo()">
+                    <input type="date" id="fecha_baja" value="2026-07-08">
                 </div>
                 <div class="form-group">
                     <label for="uma_val">VALOR UMA DIARIA 2026 ($):</label>
-                    <input type="number" id="uma_val" value="113.14" step="0.01" onchange="calcularTodo()">
+                    <input type="number" id="uma_val" value="113.14" step="0.01">
                 </div>
             </div>
 
             <div class="grid-3">
                 <div class="form-group">
                     <label for="salario_base_1">SALARIO MENSUAL BASE 1 (AGENT) ($):</label>
-                    <input type="number" id="salario_base_1" value="17000" step="100" onchange="calcularTodo()">
+                    <input type="number" id="salario_base_1" value="17000" step="100">
                 </div>
                 <div class="form-group">
                     <label for="salario_base_2">SALARIO MENSUAL BASE 2 (DEV/ANALIST) ($):</label>
-                    <input type="number" id="salario_base_2" value="8000" step="100" onchange="calcularTodo()">
+                    <input type="number" id="salario_base_2" value="8000" step="100">
                 </div>
                 <div class="form-group">
                     <label for="meses_pluri">MESES EN 2DO PUESTO SIN PAGO:</label>
-                    <input type="number" id="meses_pluri" value="6" min="0" step="0.5" onchange="calcularTodo()">
+                    <input type="number" id="meses_pluri" value="5" min="0" step="0.5">
                 </div>
             </div>
 
             <div class="grid-4">
                 <div class="form-group">
-                    <label for="dias_no_pagados">DÍAS LABORADOS NO PAGADOS:</label>
-                    <input type="number" id="dias_no_pagados" value="180" min="0" onchange="calcularTodo()">
+                    <label for="dias_no_pagados">DÍAS LABORADOS NO PAGADOS (RETENIDOS):</label>
+                    <input type="number" id="dias_no_pagados" value="38" min="0">
                 </div>
                 <div class="form-group">
                     <label for="bonos_retenidos">BONOS / VALES RETENIDOS ($):</label>
-                    <input type="number" id="bonos_retenidos" value="0" step="100" onchange="calcularTodo()">
+                    <input type="number" id="bonos_retenidos" value="3500" step="100">
                 </div>
                 <div class="form-group">
                     <label for="ptu_retenida">PTU / UTILIDADES RETENIDAS ($):</label>
-                    <input type="number" id="ptu_retenida" value="3000" step="100" onchange="calcularTodo()">
+                    <input type="number" id="ptu_retenida" value="3000" step="100">
                 </div>
                 <div class="form-group">
                     <label for="meses_salarios_vencidos">ESTIMACIÓN SALARIOS VENCIDOS (MESES):</label>
-                    <input type="number" id="meses_salarios_vencidos" value="12" min="0" max="36" onchange="calcularTodo()">
+                    <input type="number" id="meses_salarios_vencidos" value="12" min="0" max="36">
                 </div>
             </div>
 
             <div class="grid-3" style="margin-top: 10px;">
                 <label class="checkbox-label">
-                    <input type="checkbox" id="check_3meses" checked onchange="calcularTodo()">
+                    <input type="checkbox" id="check_3meses" checked>
                     3 Meses Indemnización Constitucional (Art. 48)
                 </label>
                 <label class="checkbox-label">
-                    <input type="checkbox" id="check_20dias" checked onchange="calcularTodo()">
+                    <input type="checkbox" id="check_20dias" checked>
                     20 Días por Año Laborado (Art. 50)
                 </label>
                 <label class="checkbox-label">
-                    <input type="checkbox" id="check_prima_ant" checked onchange="calcularTodo()">
+                    <input type="checkbox" id="check_prima_ant" checked>
                     Prima de Antigüedad (12 Días/Año - Topado 2 UMA)
                 </label>
             </div>
         </div>
 
         <!-- Parametros Integración Metrics -->
-        <div class="grid-4" style="margin-bottom: 25px;">
-            <div class="metric-box">
+        <div class="grid-4" style="margin-bottom: 22px;">
+            <div class="metric-box" id="mbox-dias" onclick="showMetricFormula('dias')">
                 <div class="metric-label">TIEMPO LABORADO TOTAL</div>
                 <div class="metric-val" id="metric-dias-totales">0 DÍAS</div>
             </div>
-            <div class="metric-box">
+            <div class="metric-box" id="mbox-sdb" onclick="showMetricFormula('sdb')">
                 <div class="metric-label">SALARIO DIARIO BASE TOTAL</div>
                 <div class="metric-val" id="metric-sdb">$0.00</div>
             </div>
-            <div class="metric-box">
+            <div class="metric-box" id="mbox-sdi" onclick="showMetricFormula('sdi')">
                 <div class="metric-label">SALARIO DIARIO INTEGRADO (SDI)</div>
                 <div class="metric-val" id="metric-sdi">$0.00</div>
             </div>
-            <div class="metric-box">
+            <div class="metric-box" id="mbox-tope" onclick="showMetricFormula('tope')">
                 <div class="metric-label">TOPE PRIMA ANTIGÜEDAD (2 UMA)</div>
                 <div class="metric-val" id="metric-tope-prima">$0.00</div>
             </div>
@@ -776,10 +820,10 @@
                 <div class="card-title">
                     <span>DESGLOSE DETALLADO DE LIQUIDACIÓN E INDEMNIZACIONES</span>
                 </div>
-                <button class="btn-cyber" onclick="window.print()">🖨️ IMPRIMIR / EXPORTAR</button>
+                <span class="card-badge">HAZ CLIC EN UN MONTO PARA VER SU FÓRMULA</span>
             </div>
 
-            <table class="table-cyber">
+            <table class="table-cyber" id="table-trabajador">
                 <thead>
                     <tr>
                         <th>CONCEPTO LABORAL</th>
@@ -799,47 +843,47 @@
                         <td>Salario Devengado Último Periodo</td>
                         <td>Art. 82, 88 LFT</td>
                         <td id="base-salario-devengado">-</td>
-                        <td class="amount-col" id="val-salario-devengado">$0.00</td>
+                        <td class="amount-col" id="val-salario-devengado" onclick="showRowFormula('salario_dev')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Aguinaldo Proporcional (15 días mín)</td>
                         <td>Art. 87 LFT</td>
                         <td id="base-aguinaldo">-</td>
-                        <td class="amount-col" id="val-aguinaldo">$0.00</td>
+                        <td class="amount-col" id="val-aguinaldo" onclick="showRowFormula('aguinaldo')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Vacaciones Proporcionales (Reforma Digna)</td>
                         <td>Art. 76, 81 LFT</td>
                         <td id="base-vacaciones">-</td>
-                        <td class="amount-col" id="val-vacaciones">$0.00</td>
+                        <td class="amount-col" id="val-vacaciones" onclick="showRowFormula('vacaciones')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Prima Vacacional Proporcional (30%)</td>
                         <td>Art. 80 LFT</td>
                         <td id="base-prima-vac">-</td>
-                        <td class="amount-col" id="val-prima-vac">$0.00</td>
+                        <td class="amount-col" id="val-prima-vac" onclick="showRowFormula('prima_vac')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Retroactivo Plurifuncionalidad 2do Puesto</td>
                         <td>Art. 56 Bis LFT</td>
                         <td id="base-pluri">-</td>
-                        <td class="amount-col" id="val-pluri">$0.00</td>
+                        <td class="amount-col" id="val-pluri" onclick="showRowFormula('pluri')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Bonos, Comisiones y Vales Retenidos</td>
                         <td>Art. 84, 110 LFT</td>
                         <td id="base-bonos">-</td>
-                        <td class="amount-col" id="val-bonos">$0.00</td>
+                        <td class="amount-col" id="val-bonos" onclick="showRowFormula('bonos')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Reparto de Utilidades Retenido (PTU)</td>
                         <td>Art. 117, 122 LFT</td>
                         <td id="base-ptu">-</td>
-                        <td class="amount-col" id="val-ptu">$0.00</td>
+                        <td class="amount-col" id="val-ptu" onclick="showRowFormula('ptu')">$0.00</td>
                     </tr>
                     <tr class="subtotal-row">
                         <td colspan="3">SUBTOTAL FINIQUITO (DERECHOS DEVENGADOS)</td>
-                        <td class="amount-col" id="subtotal-finiquito">$0.00</td>
+                        <td class="amount-col" id="subtotal-finiquito" onclick="showRowFormula('subtotal_finiquito')">$0.00</td>
                     </tr>
 
                     <!-- INDEMNIZACIONES POR DESPIDO INJUSTIFICADO -->
@@ -852,35 +896,35 @@
                         <td>Indemnización Constitucional (3 Meses)</td>
                         <td>Art. 48, 123 Const.</td>
                         <td id="base-3meses">-</td>
-                        <td class="amount-col" id="val-3meses">$0.00</td>
+                        <td class="amount-col" id="val-3meses" onclick="showRowFormula('inc_3meses')">$0.00</td>
                     </tr>
                     <tr>
                         <td>20 Días de Salario por Año Laborado</td>
                         <td>Art. 50 Fracc. II LFT</td>
                         <td id="base-20dias">-</td>
-                        <td class="amount-col" id="val-20dias">$0.00</td>
+                        <td class="amount-col" id="val-20dias" onclick="showRowFormula('inc_20dias')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Prima de Antigüedad (12 Días/Año)</td>
                         <td>Art. 162, 486 LFT</td>
                         <td id="base-prima-ant">-</td>
-                        <td class="amount-col" id="val-prima-ant">$0.00</td>
+                        <td class="amount-col" id="val-prima-ant" onclick="showRowFormula('prima_ant')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Salarios Vencidos / Caídos Estimados</td>
                         <td>Art. 48 LFT</td>
                         <td id="base-vencidos">-</td>
-                        <td class="amount-col" id="val-vencidos">$0.00</td>
+                        <td class="amount-col" id="val-vencidos" onclick="showRowFormula('salarios_vencidos')">$0.00</td>
                     </tr>
                     <tr class="subtotal-row">
                         <td colspan="3">SUBTOTAL INDEMNIZACIONES LABORALES</td>
-                        <td class="amount-col" id="subtotal-indemnizacion">$0.00</td>
+                        <td class="amount-col" id="subtotal-indemnizacion" onclick="showRowFormula('subtotal_indemnizacion')">$0.00</td>
                     </tr>
 
                     <!-- TOTAL TRABAJADOR -->
                     <tr class="grand-total-row">
                         <td colspan="3">GRAN TOTAL A FAVOR DEL TRABAJADOR (NETO RECLAMABLE)</td>
-                        <td class="amount-col" id="grand-total-trabajador">$0.00</td>
+                        <td class="amount-col" id="grand-total-trabajador" onclick="showRowFormula('grand_total_trabajador')">$0.00</td>
                     </tr>
                 </tbody>
             </table>
@@ -898,8 +942,8 @@
                 </div>
                 <span class="card-badge">TÍTULO 16 LFT - INSPECCIÓN STPS</span>
             </div>
-            <p style="font-size: 13px; color: #fca5a5; margin-bottom: 20px;">
-                Cálculo de sanciones administrativas impuestas por las Autoridades del Trabajo (STPS / Tribunal Laboral) por violaciones sistemáticas a la LFT. Las multas se calculan por cada trabajador afectado y por cada infracción cometida.
+            <p style="font-size: 12px; color: #fca5a5; margin-bottom: 18px;">
+                Cálculo riguroso de sanciones impuestas por la STPS / Tribunal Laboral por infracción.
             </p>
 
             <table class="table-cyber">
@@ -916,55 +960,55 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Omisión Salarial y Plurifuncionalidad No Pagada</td>
+                        <td>Omisión Salarial, Plurifuncionalidad e Impago</td>
                         <td>Art. 56 Bis, 84</td>
                         <td>Art. 994 Fracc. I</td>
                         <td>50 a 5,000 UMA</td>
-                        <td class="amount-col" id="m-min-1">$0.00</td>
-                        <td class="amount-col" id="m-med-1">$0.00</td>
-                        <td class="amount-col" id="m-max-1">$0.00</td>
+                        <td class="amount-col" id="m-min-1" onclick="showMultaFormula(1, 'min')">$0.00</td>
+                        <td class="amount-col" id="m-med-1" onclick="showMultaFormula(1, 'med')">$0.00</td>
+                        <td class="amount-col" id="m-max-1" onclick="showMultaFormula(1, 'max')">$0.00</td>
                     </tr>
                     <tr>
-                        <td>Violación a Dignidad Humana (Restricción Sanitario)</td>
+                        <td>Violación a Dignidad y Coerción Biológica (Sanitario)</td>
                         <td>Art. 2, 3, 132 Fracc. VI</td>
                         <td>Art. 994 Fracc. V / 1002</td>
                         <td>250 a 5,000 UMA</td>
-                        <td class="amount-col" id="m-min-2">$0.00</td>
-                        <td class="amount-col" id="m-med-2">$0.00</td>
-                        <td class="amount-col" id="m-max-2">$0.00</td>
+                        <td class="amount-col" id="m-min-2" onclick="showMultaFormula(2, 'min')">$0.00</td>
+                        <td class="amount-col" id="m-med-2" onclick="showMultaFormula(2, 'med')">$0.00</td>
+                        <td class="amount-col" id="m-max-2" onclick="showMultaFormula(2, 'max')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Retención Ilícita de Salario, PTU y Vales</td>
                         <td>Art. 98, 99, 110</td>
                         <td>Art. 1000, 1002</td>
                         <td>50 a 5,000 UMA</td>
-                        <td class="amount-col" id="m-min-3">$0.00</td>
-                        <td class="amount-col" id="m-med-3">$0.00</td>
-                        <td class="amount-col" id="m-max-3">$0.00</td>
+                        <td class="amount-col" id="m-min-3" onclick="showMultaFormula(3, 'min')">$0.00</td>
+                        <td class="amount-col" id="m-med-3" onclick="showMultaFormula(3, 'med')">$0.00</td>
+                        <td class="amount-col" id="m-max-3" onclick="showMultaFormula(3, 'max')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Coerción para Firma de Renuncia Voluntaria</td>
                         <td>Art. 133 Fracc. VII</td>
                         <td>Art. 1002 LFT</td>
                         <td>50 a 5,000 UMA</td>
-                        <td class="amount-col" id="m-min-4">$0.00</td>
-                        <td class="amount-col" id="m-med-4">$0.00</td>
-                        <td class="amount-col" id="m-max-4">$0.00</td>
+                        <td class="amount-col" id="m-min-4" onclick="showMultaFormula(4, 'min')">$0.00</td>
+                        <td class="amount-col" id="m-med-4" onclick="showMultaFormula(4, 'med')">$0.00</td>
+                        <td class="amount-col" id="m-max-4" onclick="showMultaFormula(4, 'max')">$0.00</td>
                     </tr>
                     <tr>
                         <td>Negativa de Expedición de Constancias Laborales</td>
                         <td>Art. 132 Fracc. VII/VIII</td>
                         <td>Art. 1002 LFT</td>
                         <td>50 a 500 UMA</td>
-                        <td class="amount-col" id="m-min-5">$0.00</td>
-                        <td class="amount-col" id="m-med-5">$0.00</td>
-                        <td class="amount-col" id="m-max-5">$0.00</td>
+                        <td class="amount-col" id="m-min-5" onclick="showMultaFormula(5, 'min')">$0.00</td>
+                        <td class="amount-col" id="m-med-5" onclick="showMultaFormula(5, 'med')">$0.00</td>
+                        <td class="amount-col" id="m-max-5" onclick="showMultaFormula(5, 'max')">$0.00</td>
                     </tr>
                     <tr class="subtotal-row">
                         <td colspan="4">TOTAL SANCIONES ADMINISTRATIVAS STPS (ACUMULADO)</td>
-                        <td class="amount-col" id="multa-total-min">$0.00</td>
-                        <td class="amount-col" id="multa-total-med">$0.00</td>
-                        <td class="amount-col" id="multa-total-max">$0.00</td>
+                        <td class="amount-col" id="multa-total-min" onclick="showMultaTotalFormula('min')">$0.00</td>
+                        <td class="amount-col" id="multa-total-med" onclick="showMultaTotalFormula('med')">$0.00</td>
+                        <td class="amount-col" id="multa-total-max" onclick="showMultaTotalFormula('max')">$0.00</td>
                     </tr>
                 </tbody>
             </table>
@@ -980,21 +1024,29 @@
                 <div class="card-title">
                     <span>DICTAMEN CONSOLIDADO DE CONTINGENCIA PATRONAL TOTAL</span>
                 </div>
-                <span class="card-badge">RIESGO FINANCIERO PATRONAL</span>
+                <span class="card-badge">RIESGO FINANCIERO PATRONAL CONSOLIDADO</span>
             </div>
 
-            <div class="grid-3" style="margin-bottom: 25px;">
-                <div class="metric-box">
+            <div class="grid-5" style="margin-bottom: 22px;">
+                <div class="metric-box" onclick="showSummaryFormula('trabajador')">
                     <div class="metric-label">MONTO TOTAL TRABAJADOR</div>
                     <div class="metric-val" id="summary-trabajador">$0.00</div>
                 </div>
-                <div class="metric-box">
-                    <div class="metric-label">MULTAS ESTIMADAS STPS (MEDIAS)</div>
-                    <div class="metric-val" id="summary-multas">$0.00</div>
+                <div class="metric-box" onclick="showSummaryFormula('multas_min')">
+                    <div class="metric-label">MULTAS STPS (ESC. MÍNIMO)</div>
+                    <div class="metric-val" id="summary-multas-min">$0.00</div>
                 </div>
-                <div class="metric-box" style="border-color: var(--concord-crimson);">
-                    <div class="metric-label">CONTINGENCIA PATRONAL TOTAL</div>
-                    <div class="metric-val" style="color: var(--red-alert);" id="summary-contingencia">$0.00</div>
+                <div class="metric-box" onclick="showSummaryFormula('multas_max')">
+                    <div class="metric-label">MULTAS STPS (ESC. MÁXIMO)</div>
+                    <div class="metric-val" id="summary-multas-max" style="color:#fca5a5;">$0.00</div>
+                </div>
+                <div class="metric-box" style="border-color: var(--concord-orange);" onclick="showSummaryFormula('contingencia_min')">
+                    <div class="metric-label">CONTINGENCIA TOTAL (MÍN)</div>
+                    <div class="metric-val" id="summary-contingencia-min" style="color: var(--concord-orange);">$0.00</div>
+                </div>
+                <div class="metric-box" style="border-color: var(--concord-crimson);" onclick="showSummaryFormula('contingencia_max')">
+                    <div class="metric-label">CONTINGENCIA TOTAL (MÁX)</div>
+                    <div class="metric-val" id="summary-contingencia-max" style="color: var(--red-alert);">$0.00</div>
                 </div>
             </div>
 
@@ -1009,18 +1061,18 @@
                 <tbody>
                     <tr>
                         <td><strong>Conciliación Directa / Convenio Rápido</strong></td>
-                        <td>Pago de derechos devengados (Finiquito) + Indemnización Constitucional pactada sin multas STPS.</td>
-                        <td class="amount-col" id="scen-conciliacion">$0.00</td>
+                        <td>Pago de derechos devengados (Finiquito) + 3 Meses Indemnización Constitucional sin multas STPS.</td>
+                        <td class="amount-col" id="scen-conciliacion" onclick="showScenarioFormula('conciliacion')">$0.00</td>
                     </tr>
                     <tr>
-                        <td><strong>Juicio Laboral con Sentencia (Escenario Base)</strong></td>
-                        <td>Gran Total Trabajador + Multas Escenario Medio STPS + Costos de Representación Legal.</td>
-                        <td class="amount-col" id="scen-juicio-base">$0.00</td>
+                        <td><strong>Juicio Laboral con Sentencia (Escenario Mínimo)</strong></td>
+                        <td>Gran Total Trabajador + Multas Escenario Mínimo STPS.</td>
+                        <td class="amount-col" id="scen-juicio-base" onclick="showScenarioFormula('base')">$0.00</td>
                     </tr>
                     <tr>
                         <td><strong>Juicio Prolongado con Multas Máximas (Escenario Crítico)</strong></td>
-                        <td>Gran Total Trabajador con 12 meses salarios vencidos + Intereses 2% + Multas Máximas STPS.</td>
-                        <td class="amount-col" id="scen-juicio-critico">$0.00</td>
+                        <td>Gran Total Trabajador con 12 meses salarios vencidos + Intereses LFT + Multas Máximas STPS.</td>
+                        <td class="amount-col" id="scen-juicio-critico" onclick="showScenarioFormula('critico')">$0.00</td>
                     </tr>
                 </tbody>
             </table>
@@ -1031,39 +1083,41 @@
 
 <!-- Terminal Footer -->
 <div id="terminal-footer">
-    <div><b>CONCORD INTERNAL AUDIT TOOL</b> | STPS COMPLIANCE</div>
-    <div>LEGAL CASE ANALYSIS</div>
+    <div><b>STPS</b> | LFT</div>
+    <div>ANÁLISIS DE CASO LEGAL (2026)</div>
 </div>
 
 <script>
-    // Audio Context Setup for Concord Terminal Audio FX
+    // Audio Context Setup for Terminal Audio FX
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
     function playSound(type) {
-        if (audioCtx.state === 'suspended') audioCtx.resume();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
+        try {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
 
-        const now = audioCtx.currentTime;
-        if (type === 'click') {
-            osc.type = 'square';
-            osc.frequency.setValueAtTime(800, now);
-            osc.frequency.exponentialRampToValueAtTime(100, now + 0.04);
-            gain.gain.setValueAtTime(0.15, now);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
-            osc.start(now);
-            osc.stop(now + 0.04);
-        } else if (type === 'tab') {
-            osc.type = 'triangle';
-            osc.frequency.setValueAtTime(1200, now);
-            osc.frequency.exponentialRampToValueAtTime(300, now + 0.06);
-            gain.gain.setValueAtTime(0.2, now);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
-            osc.start(now);
-            osc.stop(now + 0.06);
-        }
+            const now = audioCtx.currentTime;
+            if (type === 'click') {
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(800, now);
+                osc.frequency.exponentialRampToValueAtTime(100, now + 0.04);
+                gain.gain.setValueAtTime(0.12, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+                osc.start(now);
+                osc.stop(now + 0.04);
+            } else if (type === 'tab') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(1200, now);
+                osc.frequency.exponentialRampToValueAtTime(300, now + 0.06);
+                gain.gain.setValueAtTime(0.15, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+                osc.start(now);
+                osc.stop(now + 0.06);
+            }
+        } catch(e){}
     }
 
     // Matrix Rain Effect
@@ -1103,6 +1157,7 @@
     // Tab Switching Function
     function switchTab(tabId, btn) {
         playSound('tab');
+        hideTooltip();
         document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
         
@@ -1110,14 +1165,25 @@
         btn.classList.add('active');
     }
 
-    // Main LFT Calculation Logic Engine
+    // Helper Formatter
     function fmt(val) {
         return '$' + (val || 0).toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     }
 
-    function calcularTodo() {
-        playSound('click');
+    // Cache Global de Resultados de Cálculos
+    let calcResults = {};
 
+    // Sanciones LFT (UMAs)
+    const sancionesConfig = [
+        { id: 1, min: 50, med: 2525, max: 5000, name: "Plurifuncionalidad" },
+        { id: 2, min: 250, med: 2625, max: 5000, name: "Dignidad Humana / Sanitario" },
+        { id: 3, min: 50, med: 2525, max: 5000, name: "Retención de Salario / Vales / PTU" },
+        { id: 4, min: 50, med: 2525, max: 5000, name: "Coerción para Renuncia" },
+        { id: 5, min: 50, med: 275, max: 500, name: "Omisión de Constancias" }
+    ];
+
+    // MOTOR DE CÁLCULO LFT COMPLETO Y DINÁMICO
+    function calcularTodo() {
         // Fetch Input Values
         const fechaIngresoStr = document.getElementById('fecha_ingreso').value;
         const fechaBajaStr = document.getElementById('fecha_baja').value;
@@ -1136,7 +1202,7 @@
         const inc20Dias = document.getElementById('check_20dias').checked;
         const incPrimaAnt = document.getElementById('check_prima_ant').checked;
 
-        // Date Calculations
+        // Fechas y Días
         const dIngreso = new Date(fechaIngresoStr);
         const dBaja = new Date(fechaBajaStr);
         const diffMs = dBaja - dIngreso;
@@ -1145,15 +1211,14 @@
 
         document.getElementById('metric-dias-totales').innerText = diasTotales + ' DÍAS (' + anosAntiguedad.toFixed(2) + ' AÑOS)';
 
-        // Daily Base Salaries
+        // Salarios Diarios
         const sdb1 = salarioBase1 / 30;
         const sdb2 = salarioBase2 / 30;
         const sdbTotal = sdb1 + sdb2;
 
         document.getElementById('metric-sdb').innerText = fmt(sdbTotal) + '/día';
 
-        // SDI Integration (Aguinaldo 15 days, Prima Vacacional 30% on vacation days based on reform)
-        // Vacation days reform: Year 1 = 12 days
+        // SDI Integration (Vacaciones Reforma: Año 1 = 12 días)
         let diasVacAnual = 12;
         if (anosAntiguedad >= 1 && anosAntiguedad < 2) diasVacAnual = 14;
         else if (anosAntiguedad >= 2 && anosAntiguedad < 3) diasVacAnual = 16;
@@ -1169,10 +1234,8 @@
         const topePrima = Math.min(sdi, 2 * uma);
         document.getElementById('metric-tope-prima').innerText = fmt(topePrima) + '/día';
 
-        // SECTION A: FINIQUITO (DERECHOS DEVENGADOS)
+        // FINIQUITO
         const valSalarioDev = diasNoPagados * sdbTotal;
-        
-        // Days worked in current calendar year (from Jan 1 of termination year to termination date)
         const startOfYear = new Date(dBaja.getFullYear(), 0, 1);
         const diasAnoActual = Math.max(1, Math.floor((dBaja - startOfYear) / (1000 * 60 * 60 * 24)));
 
@@ -1209,12 +1272,11 @@
 
         document.getElementById('subtotal-finiquito').innerText = fmt(subtotalFiniquito);
 
-        // SECTION B: INDEMNIZACIONES POR DESPIDO INJUSTIFICADO
+        // INDEMNIZACIONES
         const val3Meses = inc3Meses ? (90 * sdi) : 0;
         const val20Dias = inc20Dias ? (20 * sdi * anosAntiguedad) : 0;
         const valPrimaAnt = incPrimaAnt ? (12 * topePrima * anosAntiguedad) : 0;
 
-        // Salarios vencidos (Max 12 months base SDI, plus 2% interest if > 12)
         let valVencidos = 0;
         if (mesesVencidos > 0) {
             const mesesBase = Math.min(12, mesesVencidos);
@@ -1228,7 +1290,7 @@
         const subtotalIndemnizacion = val3Meses + val20Dias + valPrimaAnt + valVencidos;
         const grandTotalTrabajador = subtotalFiniquito + subtotalIndemnizacion;
 
-        // Render Indemnizacion Rows
+        // Render Indemnizaciones
         document.getElementById('base-3meses').innerText = inc3Meses ? '90 días x SDI (' + fmt(sdi) + ')' : 'NO INCLUIDO';
         document.getElementById('val-3meses').innerText = fmt(val3Meses);
 
@@ -1244,19 +1306,11 @@
         document.getElementById('subtotal-indemnizacion').innerText = fmt(subtotalIndemnizacion);
         document.getElementById('grand-total-trabajador').innerText = fmt(grandTotalTrabajador);
 
-        // SECTION C: MULTAS EMPRESA (STPS)
-        // Multa Ranges in UMA
-        const sanciones = [
-            { min: 50, med: 2525, max: 5000 },  // 1. Plurifuncionalidad
-            { min: 250, med: 2625, max: 5000 }, // 2. Dignidad / Sanitario
-            { min: 50, med: 2525, max: 5000 },  // 3. Retencion Salario
-            { min: 50, med: 2525, max: 5000 },  // 4. Coercion Renuncia
-            { min: 50, med: 275, max: 500 }     // 5. Constancias Laborales
-        ];
-
+        // MULTAS EMPRESA
         let totMultaMin = 0, totMultaMed = 0, totMultaMax = 0;
+        let multasDetalle = [];
 
-        sanciones.forEach((s, idx) => {
+        sancionesConfig.forEach((s) => {
             const mMin = s.min * uma;
             const mMed = s.med * uma;
             const mMax = s.max * uma;
@@ -1265,26 +1319,360 @@
             totMultaMed += mMed;
             totMultaMax += mMax;
 
-            document.getElementById(`m-min-${idx+1}`).innerText = fmt(mMin);
-            document.getElementById(`m-med-${idx+1}`).innerText = fmt(mMed);
-            document.getElementById(`m-max-${idx+1}`).innerText = fmt(mMax);
+            multasDetalle.push({ id: s.id, min: mMin, med: mMed, max: mMax, rangeMin: s.min, rangeMax: s.max });
+
+            document.getElementById(`m-min-${s.id}`).innerText = fmt(mMin);
+            document.getElementById(`m-med-${s.id}`).innerText = fmt(mMed);
+            document.getElementById(`m-max-${s.id}`).innerText = fmt(mMax);
         });
 
         document.getElementById('multa-total-min').innerText = fmt(totMultaMin);
         document.getElementById('multa-total-med').innerText = fmt(totMultaMed);
         document.getElementById('multa-total-max').innerText = fmt(totMultaMax);
 
-        // SECTION D: RESUMEN Y ESCENARIOS
+        // CONTINGENCIA TOTAL & RESUMEN
         document.getElementById('summary-trabajador').innerText = fmt(grandTotalTrabajador);
-        document.getElementById('summary-multas').innerText = fmt(totMultaMed);
-        document.getElementById('summary-contingencia').innerText = fmt(grandTotalTrabajador + totMultaMed);
+        document.getElementById('summary-multas-min').innerText = fmt(totMultaMin);
+        document.getElementById('summary-multas-max').innerText = fmt(totMultaMax);
 
-        document.getElementById('scen-conciliacion').innerText = fmt(subtotalFiniquito + (90 * sdi));
-        document.getElementById('scen-juicio-base').innerText = fmt(grandTotalTrabajador + totMultaMed);
-        document.getElementById('scen-juicio-critico').innerText = fmt(grandTotalTrabajador + totMultaMax);
+        const contMin = grandTotalTrabajador + totMultaMin;
+        const contMax = grandTotalTrabajador + totMultaMax;
+
+        document.getElementById('summary-contingencia-min').innerText = fmt(contMin);
+        document.getElementById('summary-contingencia-max').innerText = fmt(contMax);
+
+        const scenConcil = subtotalFiniquito + (90 * sdi);
+        const scenBase = grandTotalTrabajador + totMultaMin;
+        const scenCritico = grandTotalTrabajador + totMultaMax;
+
+        document.getElementById('scen-conciliacion').innerText = fmt(scenConcil);
+        document.getElementById('scen-juicio-base').innerText = fmt(scenBase);
+        document.getElementById('scen-juicio-critico').innerText = fmt(scenCritico);
+
+        // Guardar resultados en caché
+        calcResults = {
+            uma, salarioBase1, salarioBase2, sdb1, sdb2, sdbTotal, sdi, topePrima,
+            diasTotales, anosAntiguedad, diasAnoActual, diasVacAnual,
+            valSalarioDev, valAguinaldo, valVacaciones, valPrimaVac, valPluri, valBonos, valPtu,
+            subtotalFiniquito, val3Meses, val20Dias, valPrimaAnt, valVencidos,
+            subtotalIndemnizacion, grandTotalTrabajador,
+            totMultaMin, totMultaMed, totMultaMax, multasDetalle,
+            contMin, contMax, scenConcil, scenBase, scenCritico
+        };
     }
 
-    // Initialize Calculations on Load
+    // Attach Dynamic Listeners
+    const inputsToWatch = [
+        'fecha_ingreso', 'fecha_baja', 'uma_val', 'salario_base_1', 'salario_base_2',
+        'meses_pluri', 'dias_no_pagados', 'bonos_retenidos', 'ptu_retenida',
+        'meses_salarios_vencidos', 'check_3meses', 'check_20dias', 'check_prima_ant'
+    ];
+
+    inputsToWatch.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('input', () => { calcularTodo(); });
+            el.addEventListener('change', () => { calcularTodo(); });
+        }
+    });
+
+    // SISTEMA DE TOOLTIPS CON FÓRMULAS INTERACTIVAS
+    const tooltip = document.getElementById('formula-tooltip');
+
+    function showTooltip(e, title, formula, detail) {
+        playSound('click');
+        document.getElementById('tt-title').innerText = title;
+        document.getElementById('tt-formula').innerText = formula;
+        document.getElementById('tt-detail').innerText = detail;
+
+        tooltip.style.display = 'block';
+        
+        let x = e.pageX + 15;
+        let y = e.pageY + 15;
+
+        // Control de desbordamiento de pantalla
+        if (x + 380 > window.innerWidth) x = e.pageX - 395;
+        if (y + 180 > window.innerHeight) y = e.pageY - 180;
+
+        tooltip.style.left = x + 'px';
+        tooltip.style.top = y + 'px';
+    }
+
+    function hideTooltip() {
+        tooltip.style.display = 'none';
+    }
+
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.amount-col') && !e.target.closest('.metric-box') && !e.target.closest('#formula-tooltip')) {
+            hideTooltip();
+        }
+    });
+
+    // Desglose de Fórmulas por Fila
+    function showRowFormula(type) {
+        const r = calcResults;
+        const e = window.event;
+        e.stopPropagation();
+
+        switch(type) {
+            case 'salario_dev':
+                showTooltip(e, "SALARIO DEVENGADO RETENIDO",
+                    `Fórmula: Días No Pagados × Salario Diario Base`,
+                    `Detalle: ${document.getElementById('dias_no_pagados').value} días × ${fmt(r.sdbTotal)} = ${fmt(r.valSalarioDev)}`);
+                break;
+            case 'aguinaldo':
+                showTooltip(e, "AGUINALDO PROPORCIONAL",
+                    `Fórmula: (Días Trabajados Año / 365) × 15 Días × SDB`,
+                    `Detalle: (${r.diasAnoActual} / 365) × 15 × ${fmt(r.sdbTotal)} = ${fmt(r.valAguinaldo)}`);
+                break;
+            case 'vacaciones':
+                showTooltip(e, "VACACIONES PROPORCIONALES",
+                    `Fórmula: (Días Trabajados Año / 365) × Días Vacación Anual × SDB`,
+                    `Detalle: (${r.diasAnoActual} / 365) × ${r.diasVacAnual} días × ${fmt(r.sdbTotal)} = ${fmt(r.valVacaciones)}`);
+                break;
+            case 'prima_vac':
+                showTooltip(e, "PRIMA VACACIONAL (30%)",
+                    `Fórmula: Monto Vacaciones Proporcionales × 0.30`,
+                    `Detalle: ${fmt(r.valVacaciones)} × 0.30 = ${fmt(r.valPrimaVac)}`);
+                break;
+            case 'pluri':
+                showTooltip(e, "RETROACTIVO PLURIFUNCIONALIDAD",
+                    `Fórmula: Meses en 2do Puesto × Salario Mensual Puesto 2`,
+                    `Detalle: ${document.getElementById('meses_pluri').value} meses × ${fmt(r.salarioBase2)} = ${fmt(r.valPluri)}`);
+                break;
+            case 'bonos':
+                showTooltip(e, "BONOS Y VALES RETENIDOS",
+                    `Fórmula: Asignación Directa de Vales/Comisiones Retenidas`,
+                    `Detalle: Monto ingresado en formulario = ${fmt(r.valBonos)}`);
+                break;
+            case 'ptu':
+                showTooltip(e, "REPARTO DE UTILIDADES (PTU)",
+                    `Fórmula: Monto Retenido de Utilidades Devengadas`,
+                    `Detalle: Monto ingresado en formulario = ${fmt(r.valPtu)}`);
+                break;
+            case 'subtotal_finiquito':
+                showTooltip(e, "SUBTOTAL FINIQUITO",
+                    `Fórmula: Sumatoria de Derechos Devengados Irrenunciables`,
+                    `Detalle: Salario + Aguinaldo + Vacaciones + Prima Vac. + Plurifuncionalidad + Bonos + PTU = ${fmt(r.subtotalFiniquito)}`);
+                break;
+            case 'inc_3meses':
+                showTooltip(e, "INDEMNIZACIÓN CONSTITUCIONAL",
+                    `Fórmula: 90 Días × Salario Diario Integrado (SDI)`,
+                    `Detalle: 90 × ${fmt(r.sdi)} = ${fmt(r.val3Meses)}`);
+                break;
+            case 'inc_20dias':
+                showTooltip(e, "20 DÍAS DE SALARIO POR AÑO",
+                    `Fórmula: 20 × SDI × Años de Antigüedad`,
+                    `Detalle: 20 × ${fmt(r.sdi)} × ${r.anosAntiguedad.toFixed(2)} años = ${fmt(r.val20Dias)}`);
+                break;
+            case 'prima_ant':
+                showTooltip(e, "PRIMA DE ANTIGÜEDAD",
+                    `Fórmula: 12 Días × Min(SDI, 2 UMAs) × Años de Antigüedad`,
+                    `Detalle: 12 × ${fmt(r.topePrima)} × ${r.anosAntiguedad.toFixed(2)} años = ${fmt(r.valPrimaAnt)}`);
+                break;
+            case 'salarios_vencidos':
+                showTooltip(e, "SALARIOS VENCIDOS / CAÍDOS",
+                    `Fórmula: Min(Meses, 12) × 30 Días × SDI + Intereses LFT si >12m`,
+                    `Detalle: ${document.getElementById('meses_salarios_vencidos').value} meses estimados = ${fmt(r.valVencidos)}`);
+                break;
+            case 'subtotal_indemnizacion':
+                showTooltip(e, "SUBTOTAL INDEMNIZACIONES",
+                    `Fórmula: 3 Meses + 20 Días/Año + Prima Antigüedad + Salarios Vencidos`,
+                    `Detalle: Suma de conceptos de indemnización = ${fmt(r.subtotalIndemnizacion)}`);
+                break;
+            case 'grand_total_trabajador':
+                showTooltip(e, "GRAN TOTAL A FAVOR DEL TRABAJADOR",
+                    `Fórmula: Subtotal Finiquito + Subtotal Indemnizaciones`,
+                    `Detalle: ${fmt(r.subtotalFiniquito)} + ${fmt(r.subtotalIndemnizacion)} = ${fmt(r.grandTotalTrabajador)}`);
+                break;
+        }
+    }
+
+    function showMetricFormula(type) {
+        const r = calcResults;
+        const e = window.event;
+        e.stopPropagation();
+
+        switch(type) {
+            case 'dias':
+                showTooltip(e, "TIEMPO LABORADO TOTAL",
+                    `Fórmula: (Fecha Despido - Fecha Ingreso) en Días`,
+                    `Detalle: Días totales = ${r.diasTotales} días (${r.anosAntiguedad.toFixed(2)} años)`);
+                break;
+            case 'sdb':
+                showTooltip(e, "SALARIO DIARIO BASE (SDB)",
+                    `Fórmula: (Salario Base 1 / 30) + (Salario Base 2 / 30)`,
+                    `Detalle: (${fmt(r.salarioBase1)}/30) + (${fmt(r.salarioBase2)}/30) = ${fmt(r.sdbTotal)}/día`);
+                break;
+            case 'sdi':
+                showTooltip(e, "SALARIO DIARIO INTEGRADO (SDI)",
+                    `Fórmula: SDB + Prop. Aguinaldo (15d/365) + Prop. Prima Vac. (${r.diasVacAnual}d×30%/365)`,
+                    `Detalle: ${fmt(r.sdbTotal)} + ${fmt(r.sdbTotal*15/365)} + ${fmt(r.sdbTotal*r.diasVacAnual*0.3/365)} = ${fmt(r.sdi)}/día`);
+                break;
+            case 'tope':
+                showTooltip(e, "TOPE PRIMA DE ANTIGÜEDAD",
+                    `Fórmula: Menor entre el SDI y 2 veces el valor de la UMA`,
+                    `Detalle: Min(${fmt(r.sdi)}, 2 × ${fmt(r.uma)}) = ${fmt(r.topePrima)}/día`);
+                break;
+        }
+    }
+
+    function showMultaFormula(id, scenario) {
+        const r = calcResults;
+        const e = window.event;
+        e.stopPropagation();
+
+        const multaInfo = r.multasDetalle.find(m => m.id === id);
+        const rangeVal = scenario === 'min' ? multaInfo.rangeMin : (scenario === 'max' ? multaInfo.rangeMax : (multaInfo.rangeMin + multaInfo.rangeMax)/2);
+        const val = scenario === 'min' ? multaInfo.min : (scenario === 'max' ? multaInfo.max : multaInfo.med);
+
+        showTooltip(e, `MULTA STPS (${scenario.toUpperCase()}) - INFRACCIÓN #${id}`,
+            `Fórmula: ${rangeVal} UMAs × Valor UMA Diaria`,
+            `Detalle: ${rangeVal} UMAs × ${fmt(r.uma)} = ${fmt(val)}`);
+    }
+
+    function showMultaTotalFormula(scenario) {
+        const r = calcResults;
+        const e = window.event;
+        e.stopPropagation();
+
+        const total = scenario === 'min' ? r.totMultaMin : (scenario === 'max' ? r.totMultaMax : r.totMultaMed);
+        showTooltip(e, `TOTAL MULTAS STPS (${scenario.toUpperCase()})`,
+            `Fórmula: Sumatoria de las 5 multas administrativas en escenario ${scenario}`,
+            `Detalle: Suma acumulada de infracciones = ${fmt(total)}`);
+    }
+
+    function showSummaryFormula(type) {
+        const r = calcResults;
+        const e = window.event;
+        e.stopPropagation();
+
+        switch(type) {
+            case 'trabajador':
+                showTooltip(e, "MONTO TOTAL TRABAJADOR",
+                    `Fórmula: Finiquito Devengado + Total Indemnizaciones`,
+                    `Detalle: Total Neto Reclamable = ${fmt(r.grandTotalTrabajador)}`);
+                break;
+            case 'multas_min':
+                showTooltip(e, "MULTAS STPS (MÍNIMO)",
+                    `Fórmula: Sumatoria de multas patronales en rango mínimo`,
+                    `Detalle: Impacto administrativo mínimo = ${fmt(r.totMultaMin)}`);
+                break;
+            case 'multas_max':
+                showTooltip(e, "MULTAS STPS (MÁXIMO)",
+                    `Fórmula: Sumatoria de multas patronales en rango máximo`,
+                    `Detalle: Impacto administrativo máximo = ${fmt(r.totMultaMax)}`);
+                break;
+            case 'contingencia_min':
+                showTooltip(e, "CONTINGENCIA PATRONAL TOTAL (MÍN)",
+                    `Fórmula: Total Trabajador + Multas STPS Escenario Mínimo`,
+                    `Detalle: ${fmt(r.grandTotalTrabajador)} + ${fmt(r.totMultaMin)} = ${fmt(r.contMin)}`);
+                break;
+            case 'contingencia_max':
+                showTooltip(e, "CONTINGENCIA PATRONAL TOTAL (MÁX)",
+                    `Fórmula: Total Trabajador + Multas STPS Escenario Máximo`,
+                    `Detalle: ${fmt(r.grandTotalTrabajador)} + ${fmt(r.totMultaMax)} = ${fmt(r.contMax)}`);
+                break;
+        }
+    }
+
+    function showScenarioFormula(scen) {
+        const r = calcResults;
+        const e = window.event;
+        e.stopPropagation();
+
+        switch(scen) {
+            case 'conciliacion':
+                showTooltip(e, "ESCENARIO: CONCILIACIÓN RÁPIDA",
+                    `Fórmula: Subtotal Finiquito + 90 Días Indemnización Constitucional`,
+                    `Detalle: ${fmt(r.subtotalFiniquito)} + ${fmt(90 * r.sdi)} = ${fmt(r.scenConcil)}`);
+                break;
+            case 'base':
+                showTooltip(e, "ESCENARIO: JUICIO BASE (MÍNIMO)",
+                    `Fórmula: Total Trabajador + Multas Mínimas STPS`,
+                    `Detalle: ${fmt(r.grandTotalTrabajador)} + ${fmt(r.totMultaMin)} = ${fmt(r.scenBase)}`);
+                break;
+            case 'critico':
+                showTooltip(e, "ESCENARIO: JUICIO CRÍTICO (MÁXIMO)",
+                    `Fórmula: Total Trabajador + Multas Máximas STPS`,
+                    `Detalle: ${fmt(r.grandTotalTrabajador)} + ${fmt(r.totMultaMax)} = ${fmt(r.scenCritico)}`);
+                break;
+        }
+    }
+
+    // GESTIÓN DE ARCHIVOS DE CASO (.lftcaso)
+    function guardarCaso() {
+        playSound('click');
+        const casoData = {
+            version: "2026.1",
+            fechaGuardado: new Date().toISOString(),
+            inputs: {
+                fecha_ingreso: document.getElementById('fecha_ingreso').value,
+                fecha_baja: document.getElementById('fecha_baja').value,
+                uma_val: document.getElementById('uma_val').value,
+                salario_base_1: document.getElementById('salario_base_1').value,
+                salario_base_2: document.getElementById('salario_base_2').value,
+                meses_pluri: document.getElementById('meses_pluri').value,
+                dias_no_pagados: document.getElementById('dias_no_pagados').value,
+                bonos_retenidos: document.getElementById('bonos_retenidos').value,
+                ptu_retenida: document.getElementById('ptu_retenida').value,
+                meses_salarios_vencidos: document.getElementById('meses_salarios_vencidos').value,
+                check_3meses: document.getElementById('check_3meses').checked,
+                check_20dias: document.getElementById('check_20dias').checked,
+                check_prima_ant: document.getElementById('check_prima_ant').checked
+            }
+        };
+
+        const jsonStr = JSON.stringify(casoData, null, 2);
+        const blob = new Blob([jsonStr], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `Caso_Laboral_CONCORD_${document.getElementById('fecha_baja').value}.lftcaso`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+
+    function cargarCaso(event) {
+        playSound('click');
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            try {
+                const casoData = JSON.parse(e.target.result);
+                if (casoData && casoData.inputs) {
+                    const inp = casoData.inputs;
+                    if (inp.fecha_ingreso) document.getElementById('fecha_ingreso').value = inp.fecha_ingreso;
+                    if (inp.fecha_baja) document.getElementById('fecha_baja').value = inp.fecha_baja;
+                    if (inp.uma_val) document.getElementById('uma_val').value = inp.uma_val;
+                    if (inp.salario_base_1) document.getElementById('salario_base_1').value = inp.salario_base_1;
+                    if (inp.salario_base_2) document.getElementById('salario_base_2').value = inp.salario_base_2;
+                    if (inp.meses_pluri) document.getElementById('meses_pluri').value = inp.meses_pluri;
+                    if (inp.dias_no_pagados) document.getElementById('dias_no_pagados').value = inp.dias_no_pagados;
+                    if (inp.bonos_retenidos) document.getElementById('bonos_retenidos').value = inp.bonos_retenidos;
+                    if (inp.ptu_retenida) document.getElementById('ptu_retenida').value = inp.ptu_retenida;
+                    if (inp.meses_salarios_vencidos) document.getElementById('meses_salarios_vencidos').value = inp.meses_salarios_vencidos;
+                    
+                    if (inp.check_3meses !== undefined) document.getElementById('check_3meses').checked = inp.check_3meses;
+                    if (inp.check_20dias !== undefined) document.getElementById('check_20dias').checked = inp.check_20dias;
+                    if (inp.check_prima_ant !== undefined) document.getElementById('check_prima_ant').checked = inp.check_prima_ant;
+
+                    calcularTodo();
+                    alert("¡Caso cargado exitosamente!");
+                }
+            } catch (err) {
+                alert("Error al leer el archivo de caso .lftcaso");
+            }
+        };
+        reader.readAsText(file);
+    }
+
+    // Inicialización al Cargar
     window.onload = function() {
         calcularTodo();
     };
